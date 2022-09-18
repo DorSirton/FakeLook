@@ -1,7 +1,7 @@
 class Users_Blocked{
-    User:Number =0;
-    constructor(public UserId:Number,public Title:string,public PhotoUrl:string ) {
-
+    
+    constructor(public Id:Number, public UserId:Number,
+        public UserBlockedId:Number,public BlockDate:Date ) {
     }
 }
 export default Users_Blocked;

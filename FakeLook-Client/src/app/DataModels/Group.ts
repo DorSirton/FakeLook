@@ -1,7 +1,6 @@
 class Group{
-    GroupId:Number =0;
-    constructor(public UserId:Number,public Title:string,public PhotoUrl:string ) {
-
-    }
+    PhotoUrl:string ="";
+    constructor(public GroupId:Number,public UserId:Number,
+        public Title:string) {}
 }
 export default Group;
