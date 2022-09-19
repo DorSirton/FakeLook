@@ -5,5 +5,4 @@ const service = {
         return userRepository.getAll();
     }
 }
-
 module.exports = service
