@@ -1,7 +1,10 @@
 
+const userService = require('../services/user.service');
+
 const controller = {
     getAll: async (req, res) => {
-        res.json([{a:1}])
+        const users = await userService.getAll();
+        res.json(users)
     },
 
 }
