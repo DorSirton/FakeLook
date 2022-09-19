@@ -1,3 +1,10 @@
 {
-    "port": 3000
+    "port": 3000,
+    "db": {
+        "connectionstring": "Server=tcp:fakelook-db.database.windows.net,1433;Database=FakeLook-Db;Uid=User;Pwd=DorAyalItai123;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;",
+        "server": "fakelook-db.database.windows.net",
+        "password": "DorAyalItai123",
+        "user": "User",
+        "database": "FakeLook-Db"
+    }
 }
