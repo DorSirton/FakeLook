@@ -5,7 +5,6 @@ const server = config.get('db.server');
 const password = config.get('db.password');
 const user = config.get('db.user');
 const database = config.get('db.database');
-
 let pool = undefined;
 
 const init = async () => {
