@@ -1,3 +1,51 @@
-<p>
-  Register works!
-</p>
+<form class="vh-100 gradient-custom" [formGroup]="registrationForm">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+
+              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+              <p class="text-white-50 mb-5">Please fill in your user information and Register</p>
+
+
+              <div class="form-outline mb-2">
+                <input type="text" id="form3Example1" class="form-control" formControlName="userName" />
+                <label class="form-label" for="form3Example1">User Name</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input type="email" id="form3Example2" class="form-control" formControlName="email" />
+                <label class="form-label" for="form3Example2">Email address</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input type="date" id="form3Example3" class="form-control" formControlName="birthDate" />
+                <label class="form-label" for="form3Example3">BirthDate</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" class="form-control" formControlName="password" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!registrationForm.valid"
+                (click)="onSubmit()">Register</button>
+
+            </div>
+
+            <div>
+              <p class="mb-0">Already have an account? <a (click)="navigateToLogin()"
+                  class="btn-signup text-white-50 fw-bold">Login</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

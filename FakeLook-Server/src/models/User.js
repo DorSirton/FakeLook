@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define('User', {
     UserId: {
       autoIncrement: true,
@@ -15,33 +15,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(50),
       allowNull: false
     },
-    FirstName: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    LastName: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
     BirthDate: {
       type: DataTypes.DATEONLY,
       allowNull: false
-    },
-    Gender: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-    },
-    Country: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    City: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
-    PhoneNumber: {
-      type: DataTypes.CHAR(10),
-      allowNull: true
     },
     LastConnection: {
       type: DataTypes.DATE,
@@ -51,17 +27,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
-    ProfilePicture: {
-      type: DataTypes.TEXT,
-      allowNull: true
+    Password: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    Longitude: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    Latitude: {
-      type: DataTypes.TEXT,
-      allowNull: true
+    Slat: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,

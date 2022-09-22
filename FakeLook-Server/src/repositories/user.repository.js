@@ -1,13 +1,44 @@
-const db = require('../core/db');
 
-const repository = {
+const _ = require('lodash');
+const Sequelize = require('sequelize');
+const dbSequelize = require('../core/db-sequelize');
+
+const User = require("../models/User")(dbSequelize, Sequelize.DataTypes);
+
+module.exports = {
     async getAll() {
-        const pool = db.getPool();
-        console.log('repository getAll');
-        const result = await pool.query(`select * from [dbo].[User]`);
-        console.log('asdad');
-        return result.recordset
+        return User.findAll();
+    },
+    async getById(id) {
+        const user = await User.findOne({
+            where: {
+                UserId: id
+            }
+        });
+
+        return _.omit(user.dataValues, ['Password', "Slat"]);
+    },
+    async post({ userName, email, birthDate, password, slat }) {
+        const user = {
+            UserName: userName,
+            Email: email,
+            BirthDate: birthDate,
+            RegisterDate: new Date(),
+            LastConnection: new Date(),
+            Password: password,
+            Slat: slat
+        };
+
+        const createdUser = await User.create(user);
+        return _.omit(createdUser, ['Password', "Slat"]);
+
+    },
+    async findOne({ email }) {
+        return User.findOne({
+            where: {
+                Email: email
+            }
+        });
     }
 }
 
-module.exports = repository;

@@ -6,5 +6,8 @@
         "password": "DorAyalItai123",
         "user": "User",
         "database": "FakeLook-Db"
+    },
+    "jwt": {
+        "accessTokenSecret": "rak-maccabi"
     }
 }

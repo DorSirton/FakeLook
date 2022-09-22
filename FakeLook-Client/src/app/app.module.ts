@@ -1,12 +1,12 @@
-import { CommonModule} from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatPaginatorModule} from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator'
 import { FidComponent } from './Components/Home/Fid/Fid.component';
 import { FidPostComponent } from './Components/Home/Fid/FidPost/FidPost.component';
 import { MapComponent } from './Components/Home/Map/Map.component';
@@ -21,6 +21,8 @@ import { EditProfileComponent } from './Components/Profile/EditProfile/EditProfi
 import { UserPostsComponent } from './Components/Profile/UserPosts/UserPosts.component';
 import { LoginComponent } from './Components/Start/Login/Login.component';
 import { RegisterComponent } from './Components/Start/Register/Register.component';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { RegisterComponent } from './Components/Start/Register/Register.componen
     EditProfileComponent,
     UserPostsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,13 @@ import { RegisterComponent } from './Components/Start/Register/Register.componen
     BrowserAnimationsModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
