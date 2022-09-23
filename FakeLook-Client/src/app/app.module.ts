@@ -1,10 +1,9 @@
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { FidComponent } from './Components/Home/Fid/Fid.component';
@@ -21,6 +20,7 @@ import { EditProfileComponent } from './Components/Profile/EditProfile/EditProfi
 import { UserPostsComponent } from './Components/Profile/UserPosts/UserPosts.component';
 import { LoginComponent } from './Components/Start/Login/Login.component';
 import { RegisterComponent } from './Components/Start/Register/Register.component';
+import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
 
@@ -51,7 +51,8 @@ import { DashboardComponent } from './Components/Home/dashboard/dashboard.compon
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+  
   ],
   providers: [
     {
