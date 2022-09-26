@@ -52,7 +52,6 @@ import { DashboardComponent } from './Components/Home/dashboard/dashboard.compon
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-  
   ],
   providers: [
     {

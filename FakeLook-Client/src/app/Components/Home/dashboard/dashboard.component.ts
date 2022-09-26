@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
+  selectedDisplay:string="Display Map";
   constructor(
     private authService: AuthService
   ) { }
@@ -15,7 +16,6 @@ export class DashboardComponent implements OnInit {
   async ngOnInit() {
     const me = await this.authService.me();
     console.log(me);
-
   }
 
 }

@@ -2,7 +2,6 @@
 const _ = require('lodash');
 const Sequelize = require('sequelize');
 const dbSequelize = require('../core/db-sequelize');
-
 const User = require("../models/User")(dbSequelize, Sequelize.DataTypes);
 
 module.exports = {
@@ -28,10 +27,8 @@ module.exports = {
             Password: password,
             Slat: slat
         };
-
         const createdUser = await User.create(user);
         return _.omit(createdUser, ['Password', "Slat"]);
-
     },
     async findOne({ email }) {
         return User.findOne({

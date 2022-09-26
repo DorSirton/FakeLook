@@ -1,0 +1,7 @@
+.userPostDetails{
+    display: flex;
+    justify-content: space-between;
+}
+.post-detailes{
+    text-align: center;
+}

@@ -12,7 +12,6 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.localStorageService.getAccessToken();
-
         const apiEndpoint = 'http://localhost:3000';
 
         const skipList = [

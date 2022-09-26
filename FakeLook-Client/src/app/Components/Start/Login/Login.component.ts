@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 
     const me = await this.authService.me();
     this.localStorageService.set('user', me);
-
     this.router.navigate(['dashboard']);
   }
 

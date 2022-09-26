@@ -1,1 +1,55 @@
-<p>dashboard works!</p>
+<div class="log-out">
+    <button>Log-Out</button>
+</div>
+<div class="menue">
+    <h3>User Name</h3>
+    <img src="user.image">
+    <select [(ngModel)]="selectedDisplay">
+        <option>Display Map</option>
+        <option>Display Fid</option>
+    </select>
+    <button>Notification</button>
+    <button>Create New Post</button>
+    <button>Manage Friends</button>
+    <button>My Profile</button>
+</div>
+<div class="content">
+    <div class="filter">
+        <h1>Filter Posts By :</h1>
+        <div class="filter-option">
+            <h3>Publish Date</h3>
+            <div>
+                <label>From :</label>
+                <input type="datetime-local">
+            </div>
+            <div>
+                <label>To :</label>
+                <input type="datetime-local">
+            </div>
+        </div>
+        <div class="filter-option">
+            <h3>Radius From My Location</h3>
+            <div>
+                <label>Select Radius in k"m : </label>
+                <input type="number">
+            </div>
+        </div>
+        <div class="filter-option">
+            <h3>Image Tags</h3>
+            <div>
+                <label>Insert Tags Sepperated By Commas : </label>
+                <input type="text">
+            </div>
+        </div>
+        <div class="filter-option">
+            <h3>Users Tags</h3>
+            <div>
+                <label>Insert Tags Sepperated By Commas : </label>
+                <input type="text">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectedDisplay === 'Display Map'">
+        <app-Map></app-Map>
+    </div>
+</div>

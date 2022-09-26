@@ -4,3 +4,5 @@ import { Observable } from "rxjs/internal/Observable";
 interface HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
 }
+export default HttpInterceptor
+

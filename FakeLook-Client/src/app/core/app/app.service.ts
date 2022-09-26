@@ -14,7 +14,6 @@ export class AppService {
     const user = this.localStorageService.get('user');
     return user === null ? false : true
   }
-
   me() {
     return this.localStorageService.get('user');
   }
