@@ -13,7 +13,7 @@ const controller = {
     },
     getById: async (req, res) => {
         try {
-            const { id } = req.params;
+            const  { id } = req.params;
             console.log(req.params);
             const user = await userService.getById(id);
             res.json(user);
