@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
 import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/FriendIcon.component';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
