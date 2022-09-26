@@ -1,3 +1,6 @@
-<p>
-  FriendsCollection works!
-</p>
+<div class="title">
+<h1> Manage Friends Page</h1>
+</div>
+<div class="grid-container">
+<app-FriendIcon *ngFor="let friend of friends" [UserId]="friend.UserFriendId"></app-FriendIcon>
+</div>
