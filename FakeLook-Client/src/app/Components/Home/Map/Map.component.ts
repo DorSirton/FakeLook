@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Loader } from '@googlemaps/js-api-loader';
+import { Loader } from '@googlemaps/js-api-loader';
 import User from 'src/app/DataModels/User';
 
 @Component({

@@ -2,7 +2,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MatPaginatorModule } from '@angular/material/paginator'
@@ -25,6 +24,7 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
 import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
 import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/FriendIcon.component';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
