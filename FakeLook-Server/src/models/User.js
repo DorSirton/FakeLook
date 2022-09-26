@@ -34,7 +34,12 @@ module.exports = function (sequelize, DataTypes) {
     Slat: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    ProfilePicture: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
+
   }, {
     sequelize,
     tableName: 'User',

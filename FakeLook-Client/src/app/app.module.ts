@@ -23,6 +23,7 @@ import { LoginComponent } from './Components/Start/Login/Login.component';
 import { RegisterComponent } from './Components/Start/Register/Register.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { DashboardComponent } from './Components/Home/dashboard/dashboard.component';
+import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/FriendIcon.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DashboardComponent } from './Components/Home/dashboard/dashboard.compon
     UserPostsComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    FriendIconComponent
   ],
   imports: [
     BrowserModule,
