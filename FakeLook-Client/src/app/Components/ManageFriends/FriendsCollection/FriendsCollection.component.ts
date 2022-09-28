@@ -19,6 +19,7 @@ export class FriendsCollectionComponent implements OnInit {
  
 
   @Output() friends: Users_Friends[] = [];
+  index: Number=5;
 
   constructor(
     private router: Router,
@@ -34,23 +35,7 @@ export class FriendsCollectionComponent implements OnInit {
       console.log(res)
       this.friends=res
     });
-      //   );
-      //debugger;
-
-
-
-
-     //  const userId=this.localStorageService.get('user').UserId 
-     //  this.http.get(`${environment.api}/friends/`+userId, {
-     // }).toPromise().then(res=>{
-     // this.friends=res;
-//
-     // })
-      
- //   }
   }  
-    
-    
   }
 
 
