@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 
 
@@ -9,14 +9,14 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  selectedDisplay:string="Display Map";
+  @Input() selectedDisplay:string="Display Map";
+  
   constructor(
     private authService: AuthService
   ) { }
 
   async ngOnInit() {
     const me = await this.authService.me();
-    console.log(me);
   }
 
 }

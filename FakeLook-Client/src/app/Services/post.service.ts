@@ -12,8 +12,7 @@ export class PostService {
 
 
   async getUserFriendsPosts(usersIdArray: Number[], radiusParam: Number, myLng: Number, myLat: Number): Promise<any> {
-    debugger;
-    return this.http.get(`${environment.api}/posts?usersIdArray=${usersIdArray}&radius=${radiusParam}&myLng=${myLng}&myLat=${myLat}`).toPromise()
+   return this.http.get(`${environment.api}/posts?usersIdArray=${usersIdArray}&radius=${radiusParam}&myLng=${myLng}&myLat=${myLat}`).toPromise()
   }
 }
 

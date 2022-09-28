@@ -25,6 +25,7 @@ import { DashboardComponent } from './Components/Home/dashboard/dashboard.compon
 import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/FriendIcon.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BrowserModule } from '@angular/platform-browser';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    FriendIconComponent
+    FriendIconComponent,
+    GeneralPostComponent
   ],
   imports: [
     BrowserModule,
