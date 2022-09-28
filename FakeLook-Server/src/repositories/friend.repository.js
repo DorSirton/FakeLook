@@ -6,6 +6,7 @@ const UserFriends = require("../models/Users_Friends")(dbSequelize, Sequelize.Da
 
 
 module.exports = {
+    
     async getAllById(id) {
         const friendsList = await UserFriends.findAll({
             where: {
