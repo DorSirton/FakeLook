@@ -2,3 +2,13 @@
     width: 100vw;
     height: 100vh;
 }
+.userPostDetails{
+    display: flex;
+    justify-content: space-between;
+}
+.post-detailes{
+    text-align: center;
+}
+h1{
+    color:green
+}

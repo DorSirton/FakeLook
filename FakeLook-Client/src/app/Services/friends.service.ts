@@ -19,9 +19,8 @@ constructor(
  }
 
 
-async getAllFriends(UserId: number): Promise<any> {
+async getAllFriends(UserId: Number): Promise<any> {
   return this.http.get(`${environment.api}/friends/`+UserId, {
-    
   }).toPromise()
   
 }

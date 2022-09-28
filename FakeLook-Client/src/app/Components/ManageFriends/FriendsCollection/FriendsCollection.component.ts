@@ -29,7 +29,7 @@ export class FriendsCollectionComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const userId=this.localStorageService.get('user').UserId
+    const userId = this.localStorageService.get('user').UserId;
     this.friendService.getAllFriends(userId).then(res=>{
       console.log(res)
       this.friends=res

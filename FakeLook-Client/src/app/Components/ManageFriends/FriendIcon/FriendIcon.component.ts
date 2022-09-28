@@ -20,7 +20,6 @@ export class FriendIconComponent implements OnInit {
   ngOnInit(): void {
    
    this.userService.getUserById(this.UserId).then(res=>{
-   
      this.user=<User>res;
      console.log(this.user)
      

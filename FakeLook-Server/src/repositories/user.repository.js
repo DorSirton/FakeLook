@@ -1,4 +1,3 @@
-
 const _ = require('lodash');
 const Sequelize = require('sequelize');
 const dbSequelize = require('../core/db-sequelize');

@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   async onSubmit() {
     console.log(this.registrationForm.value);
     const result = await this.authService.registration(this.registrationForm.value);
-    this.router.navigate([]);
+    this.router.navigate(['login']);
   }
 
 }

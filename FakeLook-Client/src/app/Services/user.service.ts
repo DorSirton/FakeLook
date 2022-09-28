@@ -14,7 +14,6 @@ export class UserService {
   ) { }
 
  async getUserById(id:Number):Promise<any>{
-  debugger;
        return this.http.get(`${environment.api}/users/`+id
       ).toPromise()
  }
