@@ -21,7 +21,6 @@ constructor(
 
 async getAllFriends(UserId: number): Promise<any> {
   return this.http.get(`${environment.api}/friends/`+UserId, {
-    
   }).toPromise()
   
 }
