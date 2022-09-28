@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Post from 'src/app/DataModels/Post';
 
 @Component({
   selector: 'app-FidPost',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FidPostComponent implements OnInit {
 
+  post!:Post
   constructor() { }
 
   ngOnInit() {
