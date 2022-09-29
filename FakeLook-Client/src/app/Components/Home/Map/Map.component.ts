@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import Post from 'src/app/DataModels/Post';
 
@@ -13,12 +13,13 @@ export class MapComponent implements OnInit {
   @Input() displayPosts!: Post[]
   constructor(
   ) { }
+  async ngOnInit(){}
 
-  async ngOnInit() {
+  async ngOnChanges(changes: SimpleChanges) { {
     let loader = new Loader({
       apiKey: "AIzaSyCiQwG8IXqXBbZWMfy13-Gdlb_8tLwe_hw"
     });
-
+    
     loader.load().then(() => {
       navigator.geolocation.getCurrentPosition((location) => {
         const centerLocation = {
@@ -59,7 +60,7 @@ export class MapComponent implements OnInit {
     
 
 
-
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
 import Post from 'src/app/DataModels/Post';
 import User from 'src/app/DataModels/User';

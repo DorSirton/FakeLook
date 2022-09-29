@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import Post from 'src/app/DataModels/Post';
 
 @Component({
@@ -8,7 +8,7 @@ import Post from 'src/app/DataModels/Post';
 })
 export class FidPostComponent implements OnInit {
 
-  post!:Post
+  @Input() post!:Post
   constructor() { }
 
   ngOnInit() {

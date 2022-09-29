@@ -1,4 +1,7 @@
-<div>
+<div class="fidBox">
+    <div>
+        <app-FriendIcon [UserId]="post.UserId"></app-FriendIcon>
+    </div>
     <div>
         Latitude : {{post.Latitude}} || 
         Longitude : {{post.Longitude}}
@@ -10,7 +13,5 @@
         <img src={{post.PhotoUrl}} alt="post photo url"> 
         <p>{{post.Content}}</p>
     </div>
-    <div>
-        <app-FriendIcon [UserId]="post.UserId"></app-FriendIcon>
-    </div>
+   
 </div>
