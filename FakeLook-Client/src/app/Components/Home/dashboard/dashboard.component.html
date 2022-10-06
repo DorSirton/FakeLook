@@ -1,17 +1,17 @@
 <div class="log-out">
-    <button>Log-Out</button>
+    <button type="button" class="btn btn-danger">Log-Out</button>
     <app-FriendIcon [UserId]="userId"></app-FriendIcon>
     
 </div>
 <div class="menue">
-    <select [(ngModel)]="selectedDisplay">
-        <option>Display Map</option>
-        <option>Display Fid</option>
-    </select>
-    <button>Notification</button>
-    <button>Create New Post</button>
-    <button>Manage Friends</button>
-    <button>My Profile</button>
+        <select [(ngModel)]="selectedDisplay">
+            <option>Display Map</option>
+            <option>Display Fid</option>
+        </select>
+    <button type="button" class="btn btn-primary">Notification</button>
+    <button type="button" class="btn btn-primary">Create New Post</button>
+    <button type="button" class="btn btn-primary">Manage Friends</button>
+    <button type="button" class="btn btn-primary">My Profile</button>
 </div>
 <div class="content">
     <div class="filter">

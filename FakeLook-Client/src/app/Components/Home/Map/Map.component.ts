@@ -34,6 +34,7 @@ export class MapComponent implements OnInit {
         let Mymarker = new google.maps.Marker({
           position: centerLocation,
           map: displayMap,
+          
         })
         console.log(this.displayPosts)
           this.displayPosts.forEach(element => {
@@ -44,6 +45,11 @@ export class MapComponent implements OnInit {
             let marker = new google.maps.Marker({
               position: loc,
               map: displayMap,
+              icon : {
+                path:element.PhotoUrl,
+                
+                
+              } 
             })
             var information = new google.maps.InfoWindow({
               content: `<div><div class="userPostDetails"><h1>blbllb : </h1><img src=${element.PhotoUrl}></div><div class="post-detailes"><img src="post.image"><p>${element.Content}</p><p>Publish Date</p> <p>Number Of Likes ""</p><button>Like</button></div></div>`
