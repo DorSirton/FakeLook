@@ -19,7 +19,6 @@ const postController = {
             console.log(error);
         }
     }
-
 }
 
 module.exports = postController

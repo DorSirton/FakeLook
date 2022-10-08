@@ -27,9 +27,19 @@
                 <label class="form-label" for="form3Example3">BirthDate</label>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-2">
                 <input type="password" id="form3Example4" class="form-control" formControlName="password" />
                 <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <div class="btn-upload">
+                  <button type="button" (click)="onUpload()" value="upload">Upload</button>
+                </div>
+                <input type="file" id="form3Example5" class="form-control" formControlName="ProfilePicture"/>
+                <label class="form-label" for="form3Example5" (change)="onFileSelected($event)"
+                >Profile Picture</label>
+             
               </div>
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!registrationForm.valid"

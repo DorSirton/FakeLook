@@ -12,7 +12,7 @@ const controller = {
     },
     getById: async (req, res) => {
         try {
-            const  { id } = req.params;
+            const { id } = req.params;
             console.log(req.params);
             const user = await userService.getById(id);
             res.json(user);
@@ -24,7 +24,22 @@ const controller = {
         const { userName, email, password, birthDate } = req.body;
         const createdUser = await userService.create({ userName, email, password, birthDate: new Date(birthDate) });
         res.json(createdUser);
-    }
+    },
+
+    uploadFile:(req,res)=>{
+    // req.file is the `profile-file` file
+     //req.body will hold the text fields, if there were any
+    console.log(JSON.stringify(req.file))
+    // var response = '<a href="/">Home</a><br>'
+    // response += "Files uploaded successfully.<br>"
+    // response += `<img src="${req.file.path}" /><br>`
+    //return res.send(response)
+}
+
+
+
+
+
 }
 
 module.exports = controller

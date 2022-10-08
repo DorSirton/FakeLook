@@ -16,7 +16,7 @@ module.exports = {
 
         return _.omit(user.dataValues, ['Password', "Slat"]);
     },
-    async post({ userName, email, birthDate, password, slat }) {
+    async post({ userName, email, birthDate, password,profilePicture, slat }) {
         const user = {
             UserName: userName,
             Email: email,
@@ -24,6 +24,7 @@ module.exports = {
             RegisterDate: new Date(),
             LastConnection: new Date(),
             Password: password,
+            ProfilePicture : profilePicture,
             Slat: slat
         };
         const createdUser = await User.create(user);
