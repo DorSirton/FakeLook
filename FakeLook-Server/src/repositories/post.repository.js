@@ -14,6 +14,20 @@ const postRepository = {
                 }
             )
        return posts;
+    },
+
+    async post({ title, content, photoUrl,userId, lan, lat }) {
+        const newPost = {
+            CreateDate: Date.now(),
+            Title: title,
+            Content: content,
+            PhotoUrl: photoUrl,
+            UserId: userId,
+            Longitude: lan,
+            Latitude: lat
+            
+        }
+        return await Post.create(newPost);
     }
 
 }

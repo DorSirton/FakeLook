@@ -6,14 +6,17 @@ const postService = {
     async getById(id) {
         // return userRepository.getById(id);
     },
-    async create() {
-       
+
+    async create({ title, content, photoUrl,userId, lan, lat }) {
+        return postRepository.post({ title, content, photoUrl,userId, lan, lat });
     },
+
     async getPostsFiltteredByLocation(usersIdArray,radiusParam,myLng,myLat){
         const postsArray = await postRepository.getPostsById(usersIdArray);
+        
         const filtteredPostArray = postsArray.filter(post => post.Latitude < myLat + radiusParam &&
              post.Longitude < myLng + radiusParam);
-        return filtteredPostArray;     
+        return postsArray;     
     }
 }
 module.exports = postService

@@ -2,6 +2,10 @@
     width: 100vw;
     height: 100vh;
 }
+#map{
+    width:1000px;
+    height: 1000px;
+}
 .userPostDetails{
     display: flex;
     justify-content: space-between;

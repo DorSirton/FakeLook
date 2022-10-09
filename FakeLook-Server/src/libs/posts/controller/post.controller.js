@@ -18,6 +18,11 @@ const postController = {
         catch (error) {
             console.log(error);
         }
+    },
+    create: async (req, res) => {
+        const { title, content, photoUrl,userId, lan, lat } = req.body;
+        const createdPost = await postService.create({ title, content, photoUrl,userId, lan, lat });
+        res.json(createdPost);
     }
 
 }

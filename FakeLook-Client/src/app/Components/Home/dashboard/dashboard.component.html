@@ -9,7 +9,7 @@
         <option>Display Fid</option>
     </select>
     <button>Notification</button>
-    <button>Create New Post</button>
+    <button (click)="navigateToPostEditor()" >Create New Post</button>
     <button>Manage Friends</button>
     <button>My Profile</button>
 </div>
@@ -49,7 +49,11 @@
             </div>
         </div>
     </div>
-    <div>
+    
+    <div >
         <app-GeneralPost [selectedDisplay]="selectedDisplay"></app-GeneralPost>
     </div>
+   
+    
 </div>
+

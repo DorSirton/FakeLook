@@ -21,7 +21,7 @@ export class FriendIconComponent implements OnInit {
    
    this.userService.getUserById(this.UserId).then(res=>{
      this.user=<User>res;
-     console.log(this.user)
+   //  console.log(this.user)
      
    })
 

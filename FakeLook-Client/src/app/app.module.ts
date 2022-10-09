@@ -26,6 +26,7 @@ import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/Frien
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.component';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.
     RegisterComponent,
     DashboardComponent,
     FriendIconComponent,
-    GeneralPostComponent
+    GeneralPostComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -57,14 +59,17 @@ import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[PostEditorComponent]
 })
 export class AppModule { }

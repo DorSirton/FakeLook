@@ -1,3 +1,44 @@
-<p>
-  PostEditor works!
-</p>
+<form [formGroup]="postForm">
+  <div >
+    <div >
+      <div >
+        <div  style="border-radius: 1rem;">
+          <div >
+
+            <div >
+
+
+              <h2 >Add Post</h2>
+              <p >Please fill the fields</p>
+
+
+              <div >
+                <input type="text" id="form3Example1" class="form-control" formControlName="title" />
+                <label class="form-label" for="form3Example1">Title</label>
+              </div>
+
+              <div >
+                <textarea rows="5" id="form3Example2" class="form-control" formControlName="content" ></textarea>
+                <label class="form-label" for="form3Example2">Content</label>
+              </div>
+
+              <div >
+                <input type="text" id="form3Example3" class="form-control" formControlName="photoUrl" />
+                <label class="form-label" for="form3Example3">Image</label>
+              </div>
+              <div>
+                <label class="form-label" for="form3Example3">{{lng}}</label>
+              </div>
+              <div>
+                <label class="form-label" for="form3Example3">{{lat}}</label>
+              </div>
+
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!postForm.valid"
+                (click)="onSubmit()">Share</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

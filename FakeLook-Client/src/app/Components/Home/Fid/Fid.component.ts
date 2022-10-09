@@ -14,7 +14,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class FidComponent implements OnInit {
 
-  user!: User;
+  @Input()user!: User;
   userFriends: Users_Friends[] = [];
   userFriendsId: Number[] = []
   selectedRadiusRange: Number = 0;
@@ -37,10 +37,5 @@ export class FidComponent implements OnInit {
     // });
 
   }
-
-
-
-    
-
 }
 

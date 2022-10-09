@@ -4,13 +4,10 @@ const friendService = require('../services/friend.service');
 const controller = {
     getAll: async (req, res) => {
         try {
-            //const {UserId}  = 22 //parseInt(req.body.UserId);//22
             const UserId = req.params.id
-            console.log(UserId)
             const friends = await friendService.getAll(UserId);
             res.json(friends);
         } catch (error) {
-            debugger;
             console.log("error:"+error);
         }
 

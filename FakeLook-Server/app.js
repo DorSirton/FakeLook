@@ -19,6 +19,7 @@ app.use('/groups', require('./src/libs/groups'));
 app.use('/posts', require('./src/libs/posts'));
 app.use('/users', require('./src/libs/users'));
 app.use('/friends', require('./src/libs/friends'));
+app.use('/likes', require('./src/libs/likes'));
 
 dbSequelize.authenticate().then(() => {
     console.log('Connection has been established successfully.');
