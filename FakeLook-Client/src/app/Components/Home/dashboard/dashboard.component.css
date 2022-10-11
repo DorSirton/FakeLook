@@ -5,6 +5,11 @@
     justify-content:space-evenly;
     margin: 50px;
 }
+.userDetails img{
+border-radius: 100%;
+width: 100px;
+height: 100px;
+}
 
 .log-out button{
     margin: 20px;

@@ -1,12 +1,13 @@
 <form [formGroup]="postForm">
+ 
   <div >
     <div >
       <div >
         <div  style="border-radius: 1rem;">
           <div >
 
-            <div >
-
+            <div class="main">
+              <button class="close" mat-button (click)="onClose()">X</button>
 
               <h2 >Add Post</h2>
               <p >Please fill the fields</p>
@@ -32,7 +33,7 @@
               <div>
                 <label class="form-label" for="form3Example3">{{lat}}</label>
               </div>
-
+              
               <button class="btn btn-outline-light btn-lg px-5" type="submit" [disabled]="!postForm.valid"
                 (click)="onSubmit()">Share</button>
             </div>

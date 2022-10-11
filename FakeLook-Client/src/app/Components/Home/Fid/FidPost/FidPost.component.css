@@ -6,3 +6,9 @@
     margin: 5%;
     padding: 5%;
 }
+.fidBox img{
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+
+}

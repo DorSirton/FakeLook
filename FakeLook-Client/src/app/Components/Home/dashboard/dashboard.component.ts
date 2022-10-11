@@ -7,6 +7,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AuthService } from 'src/app/Services/auth.service';
 import {MatDialog, MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { PostEditorComponent } from '../PostEditor/PostEditor.component';
+import { UserService } from 'src/app/Services/user.service';
 
 
 
@@ -19,12 +20,14 @@ export class DashboardComponent implements OnInit {
 
   @Input() selectedDisplay:string="Display Map";
   userId!:Number
+  user!:User
   //@Output() showPostEditor:boolean=false;
   
   constructor(
     private authService: AuthService,
     private authGuard: AuthGuard,
     private localStorageService: LocalStorageService,
+    private userService:UserService,
     private router: Router,
     private dialog:MatDialog
       ) { }
@@ -40,9 +43,16 @@ export class DashboardComponent implements OnInit {
   }
 
   async ngOnInit() {
-    //this.authGuard.canActivate();
+    this.authGuard.canActivate();
     this.userId= this.localStorageService.get('user').UserId;
+    this.user=await this.userService.getUserById(this.userId);
     const me = await this.authService.me();
+   
+  }
+  logOut()
+  {
+    this.authService.logout();
+    this.router.navigate(["/login"])
   }
 
 }

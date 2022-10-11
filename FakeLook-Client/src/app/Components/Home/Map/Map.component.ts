@@ -44,19 +44,19 @@ export class MapComponent implements OnInit {
             }
           let image={
             url:element.PhotoUrl,
-            size: new google.maps.Size(80, 40),
-            // The origin for this image is (0, 0).
-            origin: new google.maps.Point(0, 0),
-            // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(0, 32),
-
+            size: new google.maps.Size(180,90),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(100, 100)
           }
 
             let marker = new google.maps.Marker({
               position: loc,
               map: displayMap,
               title:element.Title,
-              icon:image
+              optimized:false,
+              icon:image,
+              shape:{coords:[17,17,18],type:'circle'}
               
             })
             var information = new google.maps.InfoWindow({
@@ -68,7 +68,6 @@ export class MapComponent implements OnInit {
            });
           });
         })
-
       });
 
     

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output, } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,NumberValueAccessor,Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
@@ -14,8 +14,8 @@ import { PostService } from 'src/app/Services/post.service';
 export class PostEditorComponent implements OnInit {
 
   postForm: FormGroup<any>;
-  @Input()lat!:Number;
-  @Input()lng!:Number;
+  lat!:Number;
+  lng!:Number;
 
     constructor(
     private router: Router,
@@ -34,14 +34,17 @@ export class PostEditorComponent implements OnInit {
     });
   }
   ngOnInit() {
+    navigator.geolocation.getCurrentPosition( (location)  =>  {
+      this.lat = location.coords.latitude;
+      this.lng = location.coords.longitude;
+     })
   }
  
 
   async onSubmit() {
-    //if(this.lng&&this.lat){
     const result=await this.postService.addPost(this.postForm.value,this.lng,this.lat);
+    console.log("location "+this.lat,this.lng)
     this.onClose();
-   // }
   }
   onClose() {
  this.dialogRef.close();

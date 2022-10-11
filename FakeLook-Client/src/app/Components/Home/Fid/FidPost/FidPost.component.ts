@@ -4,6 +4,7 @@ import { LocalStorageService } from 'src/app/core/local-storage/local-storage.se
 import Post from 'src/app/DataModels/Post';
 import User from 'src/app/DataModels/User';
 import Users_Likes from 'src/app/DataModels/UserLikes';
+import { LikesService } from 'src/app/Services/likes.service';
 import { PostService } from 'src/app/Services/post.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class FidPostComponent implements OnInit {
   @Input()likes!:Users_Likes[]
   alredyliked!:Boolean;
   userId!:Number;
-  constructor(private postService: PostService,
+  constructor(private likesService: LikesService,
     private localStorageService: LocalStorageService,
     private router : Router
     ) { }
@@ -29,13 +30,13 @@ export class FidPostComponent implements OnInit {
   }
 
   async addLike(){
-    await this.postService.addLike(this.userId,this.post.PostId);
+    await this.likesService.addLike(this.userId,this.post.PostId);
     this.ngOnInit();
   }
   async getLikes()
   {
     this.alredyliked=false
-    await this.postService.getAllLikes(this.post.PostId).then(res=>{
+    await this.likesService.getAllLikes(this.post.PostId).then(res=>{
       this.likes=res;
     })
      this.likes.forEach(like=>{

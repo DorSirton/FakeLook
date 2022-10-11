@@ -35,9 +35,9 @@ export class GeneralPostComponent implements OnInit {
   async ngOnInit() {
     
     const userId = this.localStorageService.get('user').UserId;
-    this.userService.getUserById(userId).then(res => {
-    this.user = <User>res;//ask why?? 
-    });
+   // this.userService.getUserById(userId).then(res => {
+   // this.user = <User>res;
+  //  });
     await this.friendsService.getAllFriends(userId).then(res => {
     this.userFriends = res;
     });

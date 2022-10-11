@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'friendsCollection', component: FriendsCollectionComponent },
   { path: 'postEditor', component: PostEditorComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ]
 
 
