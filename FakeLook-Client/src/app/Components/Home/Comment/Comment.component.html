@@ -1,0 +1,18 @@
+<div>
+    <div class="comments" *ngIf="comments">
+        <div class="commentBox" *ngFor="let comment of comments">
+            <div>
+                <app-FriendIcon [UserId]="comment.UserId"></app-FriendIcon>
+            </div>
+            <div class="content">{{comment.Content}}</div>
+            <div class="date">{{comment.CreateDate}}</div>
+        </div>
+    </div>
+
+    <div class="commentInput">
+        <input type="text" [(ngModel)]="content">
+        <div>
+            <button (click)="addComment()">Share</button>
+        </div>
+    </div>
+</div>

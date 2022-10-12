@@ -7,14 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    UserId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'User',
-        key: 'UserId'
-      }
-    },
+    
     PostId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,6 +16,15 @@ module.exports = function(sequelize, DataTypes) {
         key: 'PostId'
       }
     },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'User',
+        key: 'UserId'
+      }
+    },
+    
     Content: {
         type: DataTypes.TEXT,
         allowNull: true

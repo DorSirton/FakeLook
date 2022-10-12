@@ -1,0 +1,9 @@
+<div *ngIf="likes">
+<div *ngIf="alredyliked==true">
+    <button (click)="addLike()">UnLike</button>
+</div>
+<div *ngIf="alredyliked==false">
+<button (click)="addLike()">Like</button>
+</div>
+<a>likes:{{likes.length}}</a>
+</div>

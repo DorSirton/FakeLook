@@ -27,6 +27,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.component';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import { LikeComponent } from './Components/Home/Like/Like.component';
+import { CommentComponent } from './Components/Home/Comment/comment.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +51,8 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dia
     DashboardComponent,
     FriendIconComponent,
     GeneralPostComponent,
+    LikeComponent,
+    CommentComponent
     
   ],
   imports: [
@@ -70,6 +75,6 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dia
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent],
-  entryComponents:[PostEditorComponent]
+  entryComponents:[PostEditorComponent,MapPostComponent]
 })
 export class AppModule { }

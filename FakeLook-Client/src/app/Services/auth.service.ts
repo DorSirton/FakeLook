@@ -22,9 +22,8 @@ export class AuthService {
   }
   async logout(){
    this.localStorageService.remove('user');
-   this.localStorageService.remove('access_token')
-   this.localStorageService.remove('refresh_token')
-   
+   this.localStorageService.remove('access_token');
+   this.localStorageService.remove('refresh_token');
   }
 
 

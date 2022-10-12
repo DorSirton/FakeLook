@@ -1,13 +1,14 @@
 <div>
+  <button class="close" mat-button (click)="onClose()">X</button>
   <div class="userPostDetails">
-    <h1>User Name : </h1>
-    <img src="user.image">
+    
+    <app-FriendIcon [UserId]="data.userId"></app-FriendIcon>
   </div>
   <div class="post-detailes">
-    <img src="post.image">
-    <p>post content</p>
-    <p>Publish Date</p>
-    <p>Number Of Likes ""</p>
-    <button>Like</button>
+    <img src={{data.photoUrl}}>
+    <p>{{data.content}}</p>
+    <p>{{data.createDate}}</p>
+   <app-like [postId]="data.postId" [userId]="data.userId"></app-like>
+   <app-comment [postId]="data.postId"></app-comment>
   </div>
 </div>

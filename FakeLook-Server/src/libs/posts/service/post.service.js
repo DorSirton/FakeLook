@@ -13,9 +13,8 @@ const postService = {
 
     async getPostsFiltteredByLocation(usersIdArray,radiusParam,myLng,myLat){
         const postsArray = await postRepository.getPostsById(usersIdArray);
-        
         const filtteredPostArray = postsArray.filter(post => post.Latitude < myLat + radiusParam &&
-             post.Longitude < myLng + radiusParam);
+        post.Longitude < myLng + radiusParam);
         return postsArray;     
     }
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PostEditorComponent } from '../../PostEditor/PostEditor.component';
 
 @Component({
   selector: 'app-MapPost',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {userId:Number,
+    photoUrl:String,
+    content:String,
+    createDate:Date,
+    postId:Number},
+    public dialogRef: MatDialogRef<PostEditorComponent>
+  ) { }
 
   ngOnInit() {
   }
+  onClose() {
+    this.dialogRef.close();
+    
+     }
 
 }

@@ -1,6 +1,9 @@
 import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Loader } from '@googlemaps/js-api-loader';
+import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
 import Post from 'src/app/DataModels/Post';
+import { MapPostComponent } from './MapPost/MapPost.component';
 
 
 @Component({
@@ -10,10 +13,33 @@ import Post from 'src/app/DataModels/Post';
 })
 export class MapComponent implements OnInit {
   title = "google-maps";
+  userId!:Number
   @Input() displayPosts!: Post[]
-  constructor(
+  showInfoWindow:boolean=false;
+
+  
+  constructor(private localStorageService : LocalStorageService,
+    private dialog:MatDialog
   ) { }
-  async ngOnInit(){}
+  async ngOnInit(){
+    this.userId = this.localStorageService.get('user').UserId;
+  }
+  navigateToPost(post:Post){
+    const dialogConfig=new MatDialogConfig();
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus=true;
+    dialogConfig.width='50%';
+    dialogConfig.height='70%';
+    dialogConfig.position
+    dialogConfig.data={
+      userId:post.UserId,
+      photoUrl:post.PhotoUrl,
+      content:post.Content,
+      createDate:post.CreateDate,
+      postId:post.PostId
+    }
+    const dialogRef= this.dialog.open(MapPostComponent,dialogConfig)
+    }
 
   async ngOnChanges(changes: SimpleChanges) { {
     let loader = new Loader({
@@ -55,17 +81,25 @@ export class MapComponent implements OnInit {
               map: displayMap,
               title:element.Title,
               optimized:false,
-              icon:image,
-              shape:{coords:[17,17,18],type:'circle'}
+              icon:image
+              //shape:{coords:[17,17,18],type:'circle'}
               
             })
-            var information = new google.maps.InfoWindow({
-              content: `<div><div class="userPostDetails"><h1>blbllb : </h1><img src=${element.PhotoUrl}></div><div class="post-detailes"><img src="post.image"><p>${element.Content}</p><p>Publish Date</p> <p>Number Of Likes ""</p><button>Like</button></div></div>`
+          //  var information = new google.maps.InfoWindow({
+          //    content: `<div><div><app-FriendIcon [UserId]="${element.UserId}"></app-FriendIcon></div><div class="userPostDetails"><h1>${element.Title} : </h1><img src=${element.PhotoUrl}></div><div class="post-detailes"><p>${element.Content}</p><p>Publish Date:${element.CreateDate}</p><div><app-like [postId]="${element.PostId}" [userId]="${this.userId}"></app-like></div></div></div>`
+          // });
+          
+           marker.addListener('click', (event:any) => {
+             // information.open(displayMap, marker);
+             if(this.showInfoWindow)
+             {
+              this.navigateToPost(element)
+              this.showInfoWindow=false;
+             }
+             else
+             this.showInfoWindow=true;
            });
-        
-           marker.addListener('click', function() {
-              information.open(displayMap, marker);
-           });
+          
           });
         })
       });

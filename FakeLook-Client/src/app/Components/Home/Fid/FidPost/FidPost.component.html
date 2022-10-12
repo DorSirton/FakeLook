@@ -13,15 +13,6 @@
         <img src={{post.PhotoUrl}} alt="post photo url"> 
         <p>{{post.Content}}</p>
     </div>
-    <div *ngIf="alredyliked==true">
-        <button (click)="addLike()">UnLike</button>
-    </div>
-    <div *ngIf="alredyliked==false">
-    <button (click)="addLike()">Like</button>
-    </div>
-
-
-   <div *ngIf="likes">
-   <p>Likes:{{likes.length}}</p>
-   </div>
+<app-like [postId]="post.PostId" [userId]="userId"></app-like>
+<app-comment [postId]="post.PostId"  ></app-comment>
 </div>

@@ -17,7 +17,7 @@ export class FidPostComponent implements OnInit {
   @Input() post!:Post
   @Input()likes!:Users_Likes[]
   alredyliked!:Boolean;
-  userId!:Number;
+  @Input()userId!:Number;
   constructor(private likesService: LikesService,
     private localStorageService: LocalStorageService,
     private router : Router
@@ -26,24 +26,8 @@ export class FidPostComponent implements OnInit {
 
   async ngOnInit() {
   this.userId=this.localStorageService.get('user').UserId;
-  await this.getLikes()
   }
 
-  async addLike(){
-    await this.likesService.addLike(this.userId,this.post.PostId);
-    this.ngOnInit();
-  }
-  async getLikes()
-  {
-    this.alredyliked=false
-    await this.likesService.getAllLikes(this.post.PostId).then(res=>{
-      this.likes=res;
-    })
-     this.likes.forEach(like=>{
-     if(like.UserId==this.userId)
-     this.alredyliked=true;
-     }
-     )
-    }
+  
   }
 
