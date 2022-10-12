@@ -14,12 +14,7 @@ height: 100px;
 .log-out button{
     margin: 20px;
 }
-.filter{
-    text-align: center;
-}
-.filter-option{
-margin: 30px;
-}
+
 .content{
     display: flex;
     justify-content: space-between;
