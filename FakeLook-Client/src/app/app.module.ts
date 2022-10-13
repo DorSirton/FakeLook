@@ -28,7 +28,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.component';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 import { LikeComponent } from './Components/Home/Like/Like.component';
-import { CommentComponent } from './Components/Home/Comment/comment.component';
+import { CommentComponent } from './Components/Home/Comment/Comment.component';
 
 
 @NgModule({
