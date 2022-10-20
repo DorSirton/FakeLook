@@ -3,8 +3,6 @@ class User {
     LastConnection:Date= new Date();
     RegisterDate:Date = new Date();
     ProfilePicture:string = "";
-    Longitude:string ="";
-    Latitude:string = "";
 
     constructor(public UserId:Number,public Email:string, public UserName:string,
         public FirstName:string, public LastName:string,public BirthDate:Date,

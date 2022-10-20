@@ -5,7 +5,7 @@
         "server": "fakelook-db.database.windows.net",
         "password": "DorAyalItai123",
         "user": "User",
-        "database": "FakeLook-Db"
+        "database": "FakeLook-Db"  
     },
     "jwt": {
         "accessTokenSecret": "rak-maccabi"

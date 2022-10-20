@@ -16,6 +16,13 @@ export class LocalStorageService {
     const refreshToken = localStorage.getItem('refresh_token');
     return refreshToken;
   }
+  getFilteredRadius(){
+    const FilteredRadius=localStorage.getItem('FilteredRadius');
+    return FilteredRadius;
+  }
+  setFilteredRadius(value:string){
+  localStorage.setItem('FilteredRadius', value);  
+  }
 
   setAccessToken(value: string) {
     localStorage.setItem('access_token', value);

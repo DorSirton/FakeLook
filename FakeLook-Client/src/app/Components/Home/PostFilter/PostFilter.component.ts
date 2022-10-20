@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
+import Post_Tags from 'src/app/DataModels/PostTags';
 
 @Component({
   selector: 'app-PostFilter',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./PostFilter.component.css']
 })
 export class PostFilterComponent implements OnInit {
+  @Input()radius:any;
+  @Input()date!:Date;
+  @Input()tags!:Post_Tags[];
 
-  constructor() { }
+  @Input() selectedDisplay:string="Display Map";
+  constructor(private router:Router,
+    private localStorageService:LocalStorageService ) { }
 
-  ngOnInit() {
+   ngOnInit() {
+   this.radius=this.localStorageService.getFilteredRadius();
+  }
+   displayRadius(range:Number)
+  {
+    this.radius=range
+    this.localStorageService.setFilteredRadius(range.toString())
+    this.router.navigate(['/login'])
+    
   }
 
 }

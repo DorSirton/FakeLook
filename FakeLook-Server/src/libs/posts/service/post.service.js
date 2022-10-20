@@ -1,4 +1,5 @@
 const postRepository = require('../../../repositories/post.repository');
+const haversine = require("haversine-distance");
 const postService = {
     async getAll() {
         // return userRepository.getAll();
@@ -12,10 +13,22 @@ const postService = {
     },
 
     async getPostsFiltteredByLocation(usersIdArray,radiusParam,myLng,myLat){
+        const myPoint={ latitude: myLat, longitude: myLng }
+        let postPoint;
+        let haversine_km;
+        let filteredPosts=[];
         const postsArray = await postRepository.getPostsById(usersIdArray);
-        const filtteredPostArray = postsArray.filter(post => post.Latitude < myLat + radiusParam &&
-        post.Longitude < myLng + radiusParam);
-        return postsArray;     
+        
+        postsArray.forEach(post =>
+        {
+            postPoint={ latitude: post.Latitude, longitude: post.Longitude }
+            haversine_km=haversine(myPoint,postPoint)/1000
+            if(radiusParam>haversine_km)
+            filteredPosts.push(post)
+            
+        }
+        )
+        return filteredPosts.sort((post1,post2)=>post2.CreateDate-post1.CreateDate);     
     }
 }
 module.exports = postService
