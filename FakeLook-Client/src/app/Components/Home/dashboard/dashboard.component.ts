@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   @Input() selectedDisplay:string="Display Map";
   userId!:Number
   user!:User
+
   //@Output() showPostEditor:boolean=false;
   
   constructor(

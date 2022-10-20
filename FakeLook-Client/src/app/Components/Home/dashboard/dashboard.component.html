@@ -8,6 +8,10 @@
             <option>Display Map</option>
             <option>Display Fid</option>
         </select>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
     <button type="button" class="btn btn-primary">Notification</button>
     <button (click)="navigateToPostEditor()" [lang]="" type="button" class="btn btn-primary">Create New Post</button>
     <button type="button" class="btn btn-primary">Manage Friends</button>
@@ -16,9 +20,10 @@
 </div>
 <div class="content">
     <div>
-        <app-PostFilter></app-PostFilter>
+        <app-PostFilter ></app-PostFilter>
     </div>
-    <div >
+    <div class="content-item" >
         <app-GeneralPost [selectedDisplay]="selectedDisplay"></app-GeneralPost>
+        
     </div>
 </div>

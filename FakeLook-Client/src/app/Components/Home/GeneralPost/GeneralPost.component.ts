@@ -14,47 +14,45 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class GeneralPostComponent implements OnInit {
 
-  @Input() selectedDisplay:string = "";
+  @Input() selectedDisplay: string = "";
   @Input() displayPosts!: Post[];
-  @Input() showPostEditor!:boolean
-  @Input() lng!:Number;
-  @Input() lat!:Number;
+  @Input() showPostEditor!: boolean
+  myLocation!:{lat:Number,lng:Number}
+  radius:any;
 
   user!: User;
   userFriends: Users_Friends[] = [];
   userFriendsId: Number[] = []
-  selectedRadiusRange: Number = 0;
-  
+
+
   constructor(
     private localStorageService: LocalStorageService,
     private friendsService: FriendsService,
     private userService: UserService,
     private postService: PostService
-  ) { }
+  ) {
+    navigator.geolocation.getCurrentPosition((location) => {
+      this.myLocation = {
+       lat: location.coords.latitude,
+       lng: location.coords.longitude
+     }
+   })
+   }
 
   async ngOnInit() {
-    
+
     const userId = this.localStorageService.get('user').UserId;
-   // this.userService.getUserById(userId).then(res => {
-   // this.user = <User>res;
-  //  });
     await this.friendsService.getAllFriends(userId).then(res => {
-    this.userFriends = res;
+      this.userFriends = res;
     });
     this.userFriends.forEach(element => {
-    this.userFriendsId.push(element.UserFriendId)
+      this.userFriendsId.push(element.UserFriendId)
     });
-
-     navigator.geolocation.getCurrentPosition( (location)  =>  {
-     this.lat = location.coords.latitude;
-     this.lng = location.coords.longitude;
-    })
-
-    await this.postService.getUserFriendsPosts(this.userFriendsId, 40, this.lng, this.lat)
-    .then(res => {
-     this.displayPosts = res;
-    // console.log(this.displayPosts)
-    })
+   this.radius=this.localStorageService.getFilteredRadius();      
+    await this.postService.getUserFriendsPosts(this.userFriendsId,parseInt(this.radius), this.myLocation.lng, this.myLocation.lat)
+      .then(res => {
+        this.displayPosts = res;
+      })
   }
 
 }
