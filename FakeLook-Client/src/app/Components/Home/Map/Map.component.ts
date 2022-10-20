@@ -76,19 +76,22 @@ export class MapComponent implements OnInit {
               anchor: new google.maps.Point(17, 34),
               scaledSize: new google.maps.Size(100, 100)
             }
+            let shape = {
+              coords: [0, 0, 60],
+              type: 'circle'
+          };
+          
 
             let marker = new google.maps.Marker({
               position: loc,
               map: displayMap,
               title:element.Title,
               optimized:false,
-              icon:image
-              //shape:{coords:[17,17,18],type:'circle'}
-              
+              icon:image,
+              shape:shape
             })
-          //  var information = new google.maps.InfoWindow({
-          //    content: `<div><div><app-FriendIcon [UserId]="${element.UserId}"></app-FriendIcon></div><div class="userPostDetails"><h1>${element.Title} : </h1><img src=${element.PhotoUrl}></div><div class="post-detailes"><p>${element.Content}</p><p>Publish Date:${element.CreateDate}</p><div><app-like [postId]="${element.PostId}" [userId]="${this.userId}"></app-like></div></div></div>`
-          // });
+            
+          
           
            marker.addListener('click', (event:any) => {
              // information.open(displayMap, marker);
