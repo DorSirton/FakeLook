@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
   //@Output() showPostEditor:boolean=false;
   
   constructor(
-    private router: Router,
     private authService: AuthService,
     private authGuard: AuthGuard,
     private localStorageService: LocalStorageService,
