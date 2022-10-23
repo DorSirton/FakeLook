@@ -20,6 +20,13 @@ export class LocalStorageService {
     const FilteredRadius = localStorage.getItem('FilteredRadius');
     return FilteredRadius;
   }
+  setDisplayPost(value: string) {
+    localStorage.setItem('DisplayPosts', value);
+  }
+  getDisplayPost() {
+    const DisplayPost = localStorage.getItem('DisplayPosts');
+    return DisplayPost;
+  }
 
   setFilteredRadius(value: string) {
     localStorage.setItem('FilteredRadius', value);

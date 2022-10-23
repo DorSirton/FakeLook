@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
 import User from 'src/app/DataModels/User';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import {MatDialog, MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { PostEditorComponent } from '../PostEditor/PostEditor.component';
@@ -18,8 +17,8 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  @Input() selectedDisplay:string="Display Map";
+  filterOpen:boolean=true;
+  @Input() selectedDisplay:any;
   userId!:Number
   user!:User
 
@@ -31,7 +30,6 @@ export class DashboardComponent implements OnInit {
     private authGuard: AuthGuard,
     private localStorageService: LocalStorageService,
     private userService:UserService,
-    private router: Router,
     private dialog:MatDialog
       ) { }
 
@@ -47,11 +45,35 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
     this.authGuard.canActivate();
+
+    if(this.localStorageService.getDisplayPost()==null){
+      this.selectedDisplay="Display Map";
+      this.localStorageService.setDisplayPost(this.selectedDisplay)
+    }
+    else 
+      this.selectedDisplay = this.localStorageService.getDisplayPost();
+
     this.userId= this.localStorageService.get('user').UserId;
     this.user=await this.userService.getUserById(this.userId);
     const me = await this.authService.me();
    
   }
+  closeOpenFilter(){
+    if(this.filterOpen)
+    this.filterOpen=false;
+    else
+    this.filterOpen=true;
+  }
+  displayChange(){
+    debugger;
+    if(this.localStorageService.getDisplayPost()=="Display Map")
+    this.localStorageService.setDisplayPost("Display Fid")
+    else 
+    this.localStorageService.setDisplayPost("Display Map")
+
+    this.selectedDisplay=this.localStorageService.getDisplayPost();
+  }
+
   logOut()
   {
     this.authService.logout();

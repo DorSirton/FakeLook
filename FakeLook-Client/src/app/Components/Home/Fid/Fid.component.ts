@@ -24,6 +24,7 @@ export class FidComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    
     // const userId = this.localStorageService.get('user').UserId;
     // this.userService.getUserById(userId).then(res => {
     //   this.user = <User>res;

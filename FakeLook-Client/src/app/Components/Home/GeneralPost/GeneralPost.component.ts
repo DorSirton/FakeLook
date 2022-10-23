@@ -14,7 +14,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class GeneralPostComponent implements OnInit {
 
-  @Input() selectedDisplay: string = "";
+  @Input() selectedDisplay:any;
   @Input() displayPosts!: Post[];
   @Input() showPostEditor!: boolean
   myLocation!:{lat:Number,lng:Number}
@@ -42,7 +42,7 @@ export class GeneralPostComponent implements OnInit {
    }
 
   async ngOnInit() {
-
+    this.selectedDisplay=this.localStorageService.getDisplayPost();
     const userId = this.localStorageService.get('user').UserId;
     await this.friendsService.getAllFriends(userId).then(res => {
       this.userFriends = res;

@@ -4,25 +4,27 @@
         <img src={{user.ProfilePicture}}>
         <h3>{{user.UserName}}</h3>
     </div>
-        <select [(ngModel)]="selectedDisplay">
-            <option>Display Map</option>
-            <option>Display Fid</option>
-        </select>
+    <span class="ifmap" *ngIf="selectedDisplay==='Display Map'">MAP</span>
         <label class="switch">
             <input type="checkbox">
-            <span class="slider round"></span>
+            
+            <span class="slider round" (click)="displayChange()"></span>
+           
           </label>
+          <span class="iffid" *ngIf="selectedDisplay==='Display Fid'">FID</span>
     <button type="button" class="btn btn-primary">Notification</button>
     <button (click)="navigateToPostEditor()" [lang]="" type="button" class="btn btn-primary">Create New Post</button>
     <button type="button" class="btn btn-primary">Manage Friends</button>
     <button type="button" class="btn btn-primary" (click)="onProfile()">My Profile</button>
     <button type="button" (click)="logOut()" class="btn btn-danger">Log-Out</button>
+    <button type="button" (click)="closeOpenFilter()">\/</button>
+    
 </div>
 <div class="content">
-    <div>
+    <div *ngIf="filterOpen">
         <app-PostFilter ></app-PostFilter>
     </div>
-    <div class="content-item" >
+    <div>
         <app-GeneralPost [selectedDisplay]="selectedDisplay"></app-GeneralPost>
         
     </div>
