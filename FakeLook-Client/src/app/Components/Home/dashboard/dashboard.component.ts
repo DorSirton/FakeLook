@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
 import User from 'src/app/DataModels/User';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 import {MatDialog, MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { PostEditorComponent } from '../PostEditor/PostEditor.component';
@@ -26,7 +25,6 @@ export class DashboardComponent implements OnInit {
   //@Output() showPostEditor:boolean=false;
   
   constructor(
-    private router: Router,
     private authService: AuthService,
     private authGuard: AuthGuard,
     private localStorageService: LocalStorageService,
