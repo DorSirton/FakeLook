@@ -42,31 +42,26 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  onFileSelected(event : any){
-  this.selectedFile = <File>event.target.files[0];    
+  onFileSelected(event: any){
+  this.selectedFile = <File>event.target.files[0];
   }
 
-  onUpload(){
+  async onUpload(){
     console.log(this.selectedFile);
+
     const uploadImageData  = new FormData();
     if(this.selectedFile)
-    uploadImageData.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post(`${environment.api}` +'/users/image',uploadImageData ,  { observe:'response' })
-          .subscribe((response) => {
-            if ( response.status === 200) {
-              this.message = 'Image uploaded successfully';
-            } else {
-              this.message = 'Image not uploaded successfully';
-            }});  
-      }
+    uploadImageData.append('image', this.selectedFile, this.selectedFile.name);  
+    this.http.post(`${environment.api}` +'/users/image',uploadImageData, {observe : "response"}).toPromise();
+  }
+     
 
 
   async onSubmit() {
     console.log(this.registrationForm.value);
     const result = await this.authService.registration(this.registrationForm.value);
+    await this.onUpload();
     this.router.navigate(['login']);
   }
-
-
 
 }

@@ -25,6 +25,13 @@ import { DashboardComponent } from './Components/Home/dashboard/dashboard.compon
 import { FriendIconComponent } from './Components/ManageFriends/FriendIcon/FriendIcon.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { GeneralPostComponent } from './Components/Home/GeneralPost/GeneralPost.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
+import { LoginGoogleComponent } from './Components/Start/Login/Login-Google/Login-Google.component';
+import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPassword.component';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +51,11 @@ import { BrowserModule } from '@angular/platform-browser';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    FriendIconComponent
+    FriendIconComponent,
+    GeneralPostComponent,
+    LoginGoogleComponent,
+    RestPasswordComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -55,12 +66,31 @@ import { BrowserModule } from '@angular/platform-browser';
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    SocialLoginModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '320284881765-bdt17951bom3r4fh992rkjaf1vhb4elb.apps.googleusercontent.com'
+
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
     }
   ],
   bootstrap: [AppComponent]

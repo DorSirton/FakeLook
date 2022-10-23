@@ -1,0 +1,6 @@
+<div *ngIf="selectedDisplay === 'Display Map'">
+  <app-Map [displayPosts]="displayPosts"></app-Map>
+</div>
+<div *ngIf="selectedDisplay === 'Display Fid'">
+  <app-Fid [displayPosts]="displayPosts"></app-Fid>
+</div>

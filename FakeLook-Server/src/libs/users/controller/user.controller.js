@@ -1,4 +1,8 @@
 const userService = require('../services/user.service');
+const { BlobServiceClient } = require('@azure/storage-blob');
+//const multipart = require("parser-multipart");
+var multipart = require("parse-multipart");
+const AZURE_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=profilepicturesstorage;AccountKey=ZRqUXIq6MtM7vqHQAz0s8FumTEeMPxILz5A4mtc15hjDmlCO4qMz6DOzI2zwGBbgPeMKL6lIme+W+ASt+VCW8w==;EndpointSuffix=core.windows.net";
 
 const controller = {
     getAll: async (req, res) => {
@@ -26,20 +30,35 @@ const controller = {
         res.json(createdUser);
     },
 
-    uploadFile:(req,res)=>{
-    // req.file is the `profile-file` file
-     //req.body will hold the text fields, if there were any
-    console.log(JSON.stringify(req.file))
-    // var response = '<a href="/">Home</a><br>'
-    // response += "Files uploaded successfully.<br>"
-    // response += `<img src="${req.file.path}" /><br>`
-    //return res.send(response)
-}
+    uploadFile: async (req, res) => {
+        var bodyBuffer = Buffer.from(JSON.stringify(req.body));
 
+        var boundary = multipart.getBoundary(req.headers['content-type']);
+        var parts = multipart.Parse(bodyBuffer, boundary);
+        
+        console.log(parts);
 
+        const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
 
+        const container = "profilepictures";
+        const containerClient = blobServiceClient.getContainerClient(container);
 
+        //const blobName = parts[0].filename;
+        const blobName = "first";
 
+        const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+        const uploadBlobResponse = await blockBlobClient.upload(parts[0].data, parts[0].data.length);
+
+        context.res = { body: { name: parts[0].filename, type: parts[0].type, data: parts[0].data.length } };
+        context.done();
+
+        //context.res
+        // {
+        //     body: AZURE STORAGE_CONNECTION STRING
+        // }
+
+    }
 }
 
 module.exports = controller

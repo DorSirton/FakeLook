@@ -1,12 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
-import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
 import Post from 'src/app/DataModels/Post';
-import User from 'src/app/DataModels/User';
-import Users_Friends from 'src/app/DataModels/UserFriends';
-import { FriendsService } from 'src/app/Services/friends.service';
-import { PostService } from 'src/app/Services/post.service';
-import { UserService } from 'src/app/Services/user.service';
+
 
 @Component({
   selector: 'app-Map',
@@ -15,35 +10,16 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class MapComponent implements OnInit {
   title = "google-maps";
-  user!: User;
-  userFriends: Users_Friends[] = [];
-  userFriendsId: Number[] = []
-  selectedRadiusRange: Number = 0;
-  displayPosts!: Post[]
+  @Input() displayPosts!: Post[]
   constructor(
-    private localStorageService: LocalStorageService,
-    private friendsService: FriendsService,
-    private userService: UserService,
-    private postService: PostService
   ) { }
+  async ngOnInit(){}
 
-  async ngOnInit() {
-    const userId = this.localStorageService.get('user').UserId;
-    this.userService.getUserById(userId).then(res => {
-      this.user = <User>res;
-    });
-
-    await this.friendsService.getAllFriends(userId).then(res => {
-      this.userFriends = res;
-    });
-    this.userFriends.forEach(element => {
-      this.userFriendsId.push(element.UserFriendId)
-    });
-
+  async ngOnChanges(changes: SimpleChanges) { {
     let loader = new Loader({
       apiKey: "AIzaSyCiQwG8IXqXBbZWMfy13-Gdlb_8tLwe_hw"
     });
-
+    
     loader.load().then(() => {
       navigator.geolocation.getCurrentPosition((location) => {
         const centerLocation = {
@@ -55,11 +31,13 @@ export class MapComponent implements OnInit {
           center: centerLocation,
           zoom: 16
         })
-        
-        this.postService.getUserFriendsPosts(this.userFriendsId, 40, centerLocation.lng, centerLocation.lat).then(res => {
-          this.displayPosts = res;
+        let Mymarker = new google.maps.Marker({
+          position: centerLocation,
+          map: displayMap,
+          
+        })
+        console.log(this.displayPosts)
           this.displayPosts.forEach(element => {
-            console.log(element.Longitude, element.Latitude)
             let loc = {
               lng:parseFloat(element.Longitude),
               lat:parseFloat(element.Latitude)
@@ -67,6 +45,11 @@ export class MapComponent implements OnInit {
             let marker = new google.maps.Marker({
               position: loc,
               map: displayMap,
+              icon : {
+                path:element.PhotoUrl,
+                
+                
+              } 
             })
             var information = new google.maps.InfoWindow({
               content: `<div><div class="userPostDetails"><h1>blbllb : </h1><img src=${element.PhotoUrl}></div><div class="post-detailes"><img src="post.image"><p>${element.Content}</p><p>Publish Date</p> <p>Number Of Likes ""</p><button>Like</button></div></div>`
@@ -80,10 +63,10 @@ export class MapComponent implements OnInit {
 
       });
 
-    });
+    
 
 
-
+    }
   }
 
 }

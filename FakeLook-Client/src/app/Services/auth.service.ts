@@ -27,4 +27,5 @@ export class AuthService {
   async me() {
     return this.http.get(`${environment.api}/auth/me`).toPromise();
   }
+  
 }

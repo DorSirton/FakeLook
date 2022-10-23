@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit} from '@angular/core';
 import { LocalStorageService } from 'src/app/core/local-storage/local-storage.service';
+import User from 'src/app/DataModels/User';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
 
@@ -11,23 +13,23 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  selectedDisplay:string="Display Map";
+  @Input() selectedDisplay:string="Display Map";
+  userId!:Number
+  
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private authGuard: AuthGuard,
+    private localStorageService: LocalStorageService
   ) { }
 
   async ngOnInit() {
+    this.authGuard.canActivate();
+    this.userId= this.localStorageService.get('user').UserId;
     const me = await this.authService.me();
-    console.log(me);
   }
-  logOut(){
-    this.localStorageService.removeAccessToken();
-    this.localStorageService.removeRefreshToken();
-    this.localStorageService.remove('user');
-    this.router.navigate(['login']);
-    
+  
+  onProfile(){
+    this.router.navigate(['editProfile']);
   }
-
 }
