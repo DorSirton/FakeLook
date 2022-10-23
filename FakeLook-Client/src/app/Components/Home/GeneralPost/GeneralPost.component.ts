@@ -19,6 +19,8 @@ export class GeneralPostComponent implements OnInit {
   @Input() showPostEditor!: boolean
   myLocation!:{lat:Number,lng:Number}
   radius:any;
+  toDate:any;
+  fromDate:any;
 
   user!: User;
   userFriends: Users_Friends[] = [];
@@ -48,8 +50,13 @@ export class GeneralPostComponent implements OnInit {
     this.userFriends.forEach(element => {
       this.userFriendsId.push(element.UserFriendId)
     });
-   this.radius=this.localStorageService.getFilteredRadius();      
-    await this.postService.getUserFriendsPosts(this.userFriendsId,parseInt(this.radius), this.myLocation.lng, this.myLocation.lat)
+   this.radius=this.localStorageService.getFilteredRadius(); 
+   this.toDate=this.localStorageService.getFilteredToDate();     
+   this.fromDate=this.localStorageService.getFilteredFromDate();
+
+   this.toDate=new Date(this.toDate);
+   this.fromDate=new Date(this.fromDate);
+    await this.postService.getUserFriendsPosts(this.userFriendsId,parseInt(this.radius), this.myLocation.lng, this.myLocation.lat,this.toDate,this.fromDate)
       .then(res => {
         this.displayPosts = res;
       })

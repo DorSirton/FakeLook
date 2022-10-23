@@ -5,11 +5,12 @@
         <h3>Publish Date</h3>
         <div>
             <label>From :</label>
-            <input type="datetime-local">
+            <input type="date" [(ngModel)]="fromDay" value={{fromDay}} (change)="fromDateChange(fromDay)">
         </div>
         <div>
             <label>To :</label>
-            <input type="datetime-local">
+            <input type="date" [(ngModel)]="toDay" value={{toDay}} (change)="toDateChange(toDay)">
+            
         </div>
     </div>
     <div class="filter-option">
