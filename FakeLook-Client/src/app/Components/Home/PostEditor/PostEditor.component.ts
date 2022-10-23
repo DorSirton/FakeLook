@@ -16,6 +16,7 @@ export class PostEditorComponent implements OnInit {
   postForm: FormGroup<any>;
   lat!:Number;
   lng!:Number;
+  file!:File;
 
     constructor(
     private router: Router,
@@ -33,19 +34,24 @@ export class PostEditorComponent implements OnInit {
       
     });
   }
+
   ngOnInit() {
     navigator.geolocation.getCurrentPosition( (location)  =>  {
       this.lat = location.coords.latitude;
       this.lng = location.coords.longitude;
      })
   }
- 
-
   async onSubmit() {
     const result=await this.postService.addPost(this.postForm.value,this.lng,this.lat);
     console.log("location "+this.lat,this.lng)
     this.onClose();
   }
+
+ async inputImage(event:any){
+  this.file = event.target.files[0];
+  debugger;
+  }
+
   onClose() {
  this.dialogRef.close();
   }

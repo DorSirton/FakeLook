@@ -48,7 +48,7 @@ export class MapComponent implements OnInit {
   async ngOnChanges(changes: SimpleChanges) {
     {
       let loader = new Loader({
-        apiKey: "AIzaSyCiQwG8IXqXBbZWMfy13-Gdlb_8tLwe_hw"
+        apiKey: "AIzaSyBsNPjxk7W70t9RHnUFqxymlpuOkg44uE0"
       });
 
       loader.load().then(() => {

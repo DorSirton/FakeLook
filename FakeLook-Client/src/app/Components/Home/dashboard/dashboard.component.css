@@ -8,6 +8,8 @@
     position: fixed;
     width: 100%;
     z-index: 10;
+    box-shadow: 0px 0px 8px 0px rgba(9, 0, 0, 0.2);
+    background-color: white;
     
     
 }

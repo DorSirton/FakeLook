@@ -16,14 +16,28 @@ export class LocalStorageService {
     const refreshToken = localStorage.getItem('refresh_token');
     return refreshToken;
   }
-  getFilteredRadius(){
-    const FilteredRadius=localStorage.getItem('FilteredRadius');
+  getFilteredRadius() {
+    const FilteredRadius = localStorage.getItem('FilteredRadius');
     return FilteredRadius;
   }
-  setFilteredRadius(value:string){
-  localStorage.setItem('FilteredRadius', value);  
-  }
 
+  setFilteredRadius(value: string) {
+    localStorage.setItem('FilteredRadius', value);
+  }
+  getFilteredToDate() {
+    const FilteredToDate = localStorage.getItem('FilteredToDate');
+    return FilteredToDate;
+  }
+  setFilteredToDate(value: string) {
+    localStorage.setItem('FilteredToDate', value);
+  }
+  getFilteredFromDate() {
+    const FilteredToDate = localStorage.getItem('FilteredFromDate');
+    return FilteredToDate;
+  }
+  setFilteredFromDate(value: string) {
+    localStorage.setItem('FilteredFromDate', value);
+  }
   setAccessToken(value: string) {
     localStorage.setItem('access_token', value);
   }
@@ -50,7 +64,7 @@ export class LocalStorageService {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  remove(key : string){
+  remove(key: string) {
     localStorage.removeItem(key);
   }
 }
