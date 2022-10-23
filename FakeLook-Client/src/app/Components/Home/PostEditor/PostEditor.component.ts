@@ -42,7 +42,7 @@ export class PostEditorComponent implements OnInit {
      })
   }
   async onSubmit() {
-    const result=await this.postService.addPost(this.postForm.value,this.lng,this.lat);
+    const result= await this.postService.addPost(this.postForm.value,this.lng,this.lat);
     console.log("location "+this.lat,this.lng)
     this.onClose();
   }
