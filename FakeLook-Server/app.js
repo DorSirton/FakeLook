@@ -15,6 +15,7 @@ app.get('/', function (req, res) {
 })
 
 app.use('/auth', require('./src/libs/auth'));
+app.use('/social-auth', require('./src/libs/social-auth'));
 app.use('/groups', require('./src/libs/groups'));
 app.use('/posts', require('./src/libs/posts'));
 app.use('/users', require('./src/libs/users'));

@@ -11,14 +11,7 @@ function generateAccessToken(user) {
 const controller = {
     login: async (req, res) => {
         const { email, password } = req.body;
-        const loggedInUser = await authService.login(email, password);
-
-        const jwtuser = { email: loggedInUser.Email, userId: loggedInUser.UserId };
-        const accessToken = generateAccessToken(jwtuser);
-        const refreshToken = jwt.sign(jwtuser, process.env.REFRESH_TOKEN_SECRET);
-
-        await authService.removeRefreshToken(jwtuser.userId);
-        await authService.createRefreshToken(jwtuser.userId, refreshToken);
+        const { accessToken, refreshToken } = await authService.login(email, password);
 
         res.json({ accessToken, refreshToken });
     },

@@ -30,6 +30,12 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dia
 import { LikeComponent } from './Components/Home/Like/Like.component';
 import { CommentComponent } from './Components/Home/Comment/Comment.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
+import { LoginGoogleComponent } from './Components/Start/Login/Login-Google/Login-Google.component';
+import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPassword.component';
+
+
 
 @NgModule({
   declarations: [
@@ -53,6 +59,9 @@ import { CommentComponent } from './Components/Home/Comment/Comment.component';
     GeneralPostComponent,
     LikeComponent,
     CommentComponent
+    ,
+    LoginGoogleComponent,
+    RestPasswordComponent
     
   ],
   imports: [
@@ -64,6 +73,7 @@ import { CommentComponent } from './Components/Home/Comment/Comment.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    SocialLoginModule,
     MatDialogModule
   ],
   providers: [
@@ -71,6 +81,24 @@ import { CommentComponent } from './Components/Home/Comment/Comment.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '320284881765-bdt17951bom3r4fh992rkjaf1vhb4elb.apps.googleusercontent.com'
+
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
     },
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],

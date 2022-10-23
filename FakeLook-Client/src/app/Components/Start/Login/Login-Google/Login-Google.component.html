@@ -1,0 +1,33 @@
+<div>
+  <!--<asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>-->
+  <!-- <div id="my-signin2"></div> -->
+
+  <!-- <div class="g-signin2" data-onsuccess="signInWithGoogle"></div> -->
+  <!-- <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button> -->
+  <div (click)="loginWithGoogle()" class="google_signin">
+    <asl-google-signin-button #googleBtnRef></asl-google-signin-button>
+</div>
+</div>
+<!-- 
+<div *ngif="!user" class="card text-center">
+  <h6 class="card-header">FACEPrep Google Login></h6>
+  <div class="card-block">
+    <h4 class="card-title">Notsigned ink</h4>
+    <p class="card-text">sign in with</p>
+  </div>
+  <div class="card-block">
+    <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle(user)"></button>
+  </div>
+</div>
+
+<div *ngIf="user" class="card-text-center">
+  <h6 class="card-header">FACEPrep Google Login</h6>
+  <div class="card-block"></div>
+  <div class="card-block">
+    <h4 class="card-title">{{user.name}}</h4>
+     <p clas="card-text">{{user.email}}</p>
+  </div>
+  <div class="card-block">
+  <button class="btn btn-social-icon btn-google mx-1" (click)="signOut()">sign Out</button>
+  </div>
+</div> -->
