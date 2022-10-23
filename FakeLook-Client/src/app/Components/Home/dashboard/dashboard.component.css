@@ -8,8 +8,13 @@
     position: fixed;
     width: 100%;
     z-index: 10;
+    background-color: white;
     
     
+}
+.main{
+  height: auto;
+  background-color: #dce6f1;
 }
 .userDetails img{
 border-radius: 100%;
