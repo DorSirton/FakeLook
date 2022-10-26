@@ -21,6 +21,7 @@ app.use('/posts', require('./src/libs/posts'));
 app.use('/users', require('./src/libs/users'));
 app.use('/friends', require('./src/libs/friends'));
 app.use('/likes', require('./src/libs/likes'));
+app.use('/tags', require('./src/libs/tags'));
 app.use('/comments', require('./src/libs/comments'));
 
 dbSequelize.authenticate().then(() => {

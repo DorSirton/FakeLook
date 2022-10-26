@@ -22,14 +22,6 @@ module.exports = function(sequelize, DataTypes) {
     TagName: {
       type: DataTypes.STRING(50),
       allowNull: false
-    },
-    Longitude: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    Latitude: {
-      type: DataTypes.TEXT,
-      allowNull: true
     }
   }, {
     sequelize,

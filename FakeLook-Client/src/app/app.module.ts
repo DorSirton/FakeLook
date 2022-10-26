@@ -34,6 +34,16 @@ import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-s
 import { GoogleLoginProvider} from '@abacritt/angularx-social-login';
 import { LoginGoogleComponent } from './Components/Start/Login/Login-Google/Login-Google.component';
 import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPassword.component';
+import { TagUsersComponent } from './Components/Tags/tag-users/tag-users.component';
+import {MatChipsModule, MAT_CHIPS_DEFAULT_OPTIONS} from '@angular/material/chips'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import {MatIconModule} from '@angular/material/icon';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { GlobalTagsComponent } from './Components/Tags/global-tags/global-tags.component';
+import { HashTagsComponent } from './Components/Tags/hash-tags/hash-tags.component';
+
+
 
 
 
@@ -58,11 +68,14 @@ import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPas
     FriendIconComponent,
     GeneralPostComponent,
     LikeComponent,
-    CommentComponent
-    ,
+    CommentComponent,
     LoginGoogleComponent,
-    RestPasswordComponent
+    RestPasswordComponent,
+    TagUsersComponent,
+    GlobalTagsComponent,
+    HashTagsComponent,
     
+
   ],
   imports: [
     BrowserModule,
@@ -74,13 +87,23 @@ import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPas
     BrowserAnimationsModule,
     MatPaginatorModule,
     SocialLoginModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
+    },
+    {
+    provide: MAT_CHIPS_DEFAULT_OPTIONS,
+    useValue: {
+      separatorKeyCodes: [ENTER, COMMA]
+    }
     },
     {
       provide: 'SocialAuthServiceConfig',
@@ -103,6 +126,6 @@ import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPas
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent],
-  entryComponents:[PostEditorComponent,MapPostComponent]
+  entryComponents:[PostEditorComponent,MapPostComponent,TagUsersComponent]
 })
 export class AppModule { }

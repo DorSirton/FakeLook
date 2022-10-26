@@ -19,10 +19,13 @@
               </div>
 
               <div >
-                <textarea rows="5" id="form3Example2" class="form-control" formControlName="content" ></textarea>
+                <textarea  rows="4" id="form3Example2" class="form-control" formControlName="content" ></textarea>
                 <label class="form-label" for="form3Example2">Content</label>
               </div>
-
+              <div>
+                 <app-tag-users ></app-tag-users>
+              </div>
+              <app-hash-tags [tagsIds]="hashTags" [enableAddTag]="true"></app-hash-tags>
               <div >
                 <input type="file" id="form3Example3" class="form-control" (change)="inputImage($event)" formControlName="photoUrl" />
                 <label class="form-label" for="form3Example3">Image</label>

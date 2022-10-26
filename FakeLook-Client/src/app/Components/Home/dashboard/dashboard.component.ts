@@ -64,6 +64,12 @@ export class DashboardComponent implements OnInit {
     else
     this.filterOpen=true;
   }
+  closeFilter(){
+  this.filterOpen=false
+  }
+  openFilter(){
+  this.filterOpen=true
+  }
   displayChange(){
     debugger;
     if(this.localStorageService.getDisplayPost()=="Display Map")

@@ -9,6 +9,8 @@ import { RestPasswordComponent } from './Components/Profile/RestPassword/RestPas
 import { LoginGoogleComponent } from './Components/Start/Login/Login-Google/Login-Google.component';
 import { LoginComponent } from './Components/Start/Login/Login.component';
 import { RegisterComponent } from './Components/Start/Register/Register.component';
+import { GlobalTagsComponent } from './Components/Tags/global-tags/global-tags.component';
+import { TagUsersComponent } from './Components/Tags/tag-users/tag-users.component';
 
 
 
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'Login-Google', component: LoginGoogleComponent },
   { path: 'friendsCollection', component: FriendsCollectionComponent },
   { path: 'postEditor', component: PostEditorComponent },
+  { path: 'profileIcon', component: TagUsersComponent},
+  { path: 'profileIconAdd', component: GlobalTagsComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ]
 

@@ -1,5 +1,5 @@
 <div class="main">
-<div class="menue">
+<div class="menue" (mouseenter)="openFilter()" >
     <div class="userDetails">
         <img src={{user.ProfilePicture}}>
         <h3>{{user.UserName}}</h3>
@@ -17,15 +17,13 @@
     <button type="button" class="btn btn-primary">Manage Friends</button>
     <button type="button" class="btn btn-primary" (click)="onProfile()">My Profile</button>
     <button type="button" (click)="logOut()" class="btn btn-danger">Log-Out</button>
-    <button type="button" (click)="closeOpenFilter()">\/</button>
-    
 </div>
-<div class="content">
-    <div *ngIf="filterOpen">
+<div (mouseenter)="openFilter()"class="content">
+    <div class="postfilter" *ngIf="filterOpen">
         <app-PostFilter ></app-PostFilter>
     </div>
-    <div>
-        <app-GeneralPost [selectedDisplay]="selectedDisplay"></app-GeneralPost>
+    <div (mouseenter)="closeFilter()">
+        <app-GeneralPost  [selectedDisplay]="selectedDisplay"></app-GeneralPost>
         
     </div>
 </div>

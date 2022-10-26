@@ -1,0 +1,34 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+    <div class="title">
+        <mat-label>User Tags</mat-label>
+       </div> 
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let user of users"
+            (removed)="remove(user)">
+            {{user}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="New User..."
+            #fruitInput
+            [formControl]="userCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+ 
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+        {{user}}
+         <!-- <div *ngFor="let id of allFriendsId">
+        <app-FriendIcon [UserId]="id"></app-FriendIcon>
+        </div>  -->
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  
+  
